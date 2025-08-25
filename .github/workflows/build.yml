@@ -33,8 +33,6 @@ jobs:
         os: [ubuntu-20.04]
         build-type: [Release]
         include:
-          - os: windows-latest
-            cmake-args: '-AWin32 -Thost=x86 -DGH_ACBUILD=TRUE  -DUSING_BOOST_NO_CONAN=TRUE -DUSING_OPENSSL_NO_CONAN=TRUE -DBoost_NO_BOOST_CMAKE=ON'
           - os: ubuntu-20.04
             cmake-args: '-DCMAKE_CXX_FLAGS=-m32 -DCMAKE_C_FLAGS=-m32 -DGH_ACBUILD=TRUE'
 
