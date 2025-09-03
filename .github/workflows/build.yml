@@ -56,13 +56,15 @@ jobs:
       uses: lukka/get-cmake@latest
 
     - if: runner.os == 'Windows'
-      name: Install boost
+      name: Install boost with vcpkg
       run: |
-          choco install boost-msvc-14.3 --version=1.82.0 --force
+          git clone https://github.com/Microsoft/vcpkg.git C:\vcpkg
+          C:\vcpkg\bootstrap-vcpkg.bat
+          C:\vcpkg\vcpkg.exe install boost-system:x86-windows boost-filesystem:x86-windows boost-thread:x86-windows
 
     - if: runner.os == 'Windows'
       name: Set boost env
-      run: echo "BOOST_ROOT=C:\\ProgramData\\chocolatey\\lib\\boost-msvc-14.3" >> $GITHUB_ENV
+      run: echo "BOOST_ROOT=C:\\vcpkg\\installed\\x86-windows" >> $GITHUB_ENV
       shell: bash
 
     - if: runner.os == 'Windows'
