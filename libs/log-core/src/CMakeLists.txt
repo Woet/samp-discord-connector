@@ -114,8 +114,8 @@ endif()
 
 target_link_libraries(log-core PRIVATE
 	amx
-	CONAN_PKG::fmt
-	CONAN_PKG::yaml-cpp
+	fmt::fmt
+	yaml-cpp::yaml-cpp
 )
 
 if(MSVC)

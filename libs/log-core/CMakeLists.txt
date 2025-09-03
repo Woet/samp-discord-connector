@@ -28,26 +28,9 @@ endif()
 
 set(LOGCORE_LIBS_DIR "${PROJECT_SOURCE_DIR}/libs")
 
-# -- CONAN
-include(cmake/conan.cmake)
-function(add_conan_lib pkg_name conan_pkg)
-	conan_check(REQUIRED)
-
-	conan_cmake_run(
-		REQUIRES ${conan_pkg}
-		ARCH x86
-		BASIC_SETUP CMAKE_TARGETS
-		BUILD missing
-	)
-
-	set_target_properties(${pkg_name} PROPERTIES IMPORTED_GLOBAL TRUE)
-endfunction()
-
-if(NOT DEFINED CONAN_HAS_FMT)
-	add_conan_lib(CONAN_PKG::fmt fmt/7.1.3)
-endif()
-
-add_conan_lib(CONAN_PKG::yaml-cpp yaml-cpp/0.7.0)
+# -- Modern Conan 2.x approach - packages handled by parent project
+# fmt is already available from parent project
+# yaml-cpp would need to be added to parent conanfile.txt if needed
 
 set(LOGCORE_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include" CACHE INTERNAL "")
 add_subdirectory(src)
