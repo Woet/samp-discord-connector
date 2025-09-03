@@ -99,7 +99,7 @@ jobs:
         conan install .. --build=missing -s arch=x86 -s build_type=${{ matrix.build-type }}
     
     - name: Generate build files
-      run: cd build && cmake .. ${{ matrix.cmake-args }} -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DDCC_VERSION="${{ env.REPO_TAG }}" -DBOOST_ROOT=${{ env.BOOST_ROOT }} -DOPENSSL_ROOT=${{ env.OPENSSL_ROOT }}
+      run: cd build && cmake .. ${{ matrix.cmake-args }} -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DDCC_VERSION="${{ env.REPO_TAG }}" -DBOOST_ROOT=${{ env.BOOST_ROOT }} -DOPENSSL_ROOT=${{ env.OPENSSL_ROOT }} -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake
 
     - if: runner.os == 'Windows'
       name: Build Windows
