@@ -44,7 +44,7 @@ bool WaitForInitialization()
 {
 	unsigned int const
 		SLEEP_TIME_MS = 20,
-		TIMEOUT_TIME_MS = 20 * 1000;
+		TIMEOUT_TIME_MS = 1 * 1000;
 	unsigned int waited_time = 0;
 	while (true)
 	{
