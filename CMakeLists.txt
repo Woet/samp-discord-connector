@@ -79,19 +79,10 @@ if(USING_BOOST_NO_CONAN)
 
 	set(Boost_INCLUDE_DIR "${Boost_INCLUDE_DIR}" PARENT_SCOPE)
 else()
-	conan_check(REQUIRED)
-	conan_cmake_run(
-		REQUIRES boost/1.79.0
-		ARCH x86
-		BASIC_SETUP CMAKE_TARGETS
-		BUILD missing
-		OPTIONS boost/*:zlib=False
-	)
-	set_target_properties(CONAN_PKG::boost PROPERTIES IMPORTED_GLOBAL TRUE)
+	# Modern Conan 2.x approach with find_package
+	find_package(boost REQUIRED)
+	find_package(fmt REQUIRED)
 endif()
-
-set(CONAN_HAS_FMT TRUE CACHE INTERNAL FALSE)
-add_conan_lib(CONAN_PKG::fmt fmt/7.1.3)
 
 if(USING_OPENSSL_NO_CONAN)
 	if(NOT DEFINED OPENSSL_USE_STATIC_LIBS)
@@ -105,7 +96,7 @@ if(USING_OPENSSL_NO_CONAN)
 		message(FATAL_ERROR "Could NOT find OpenSSL; specify additional paths.")
 	endif()
 else()
-	add_conan_lib(CONAN_PKG::openssl openssl/1.1.1k)
+	find_package(OpenSSL REQUIRED)
 endif()
 
 add_subdirectory(libs/log-core)
