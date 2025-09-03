@@ -44,7 +44,7 @@ jobs:
       CMAKE_BUILD_PARALLEL_LEVEL: 2
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         submodules: recursive
 
@@ -83,7 +83,7 @@ jobs:
         sudo apt install gcc-9-multilib g++-9-multilib libstdc++-10-dev:i386
 
     - name: Get python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: 3.9.0 # SemVer's version range syntax
 
@@ -110,7 +110,7 @@ jobs:
       shell: pwsh
       
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: discord-connector-${{ env.REPO_TAG }}-${{ runner.os }}-${{ matrix.build-type }}
         path: ${{ runner.workspace }}/samp-discord-connector/build/artifact/discord-connector-${{ env.REPO_TAG }}-${{ runner.os }}-${{ matrix.build-type }}.zip
