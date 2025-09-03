@@ -53,7 +53,7 @@ jobs:
       shell: bash
     
     - name: get-cmake
-      uses: lukka/get-cmake@v3.23.0
+      uses: lukka/get-cmake@latest
 
     - if: runner.os == 'Windows'
       name: Install boost
