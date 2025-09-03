@@ -127,7 +127,7 @@ if(USING_BOOST_NO_CONAN)
 	target_include_directories(discord-connector PUBLIC ${Boost_INCLUDE_DIR})
 	target_link_libraries(discord-connector ${Boost_LIBRARIES})
 else()
-	target_link_libraries(discord-connector boost::boost)
+	target_link_libraries(discord-connector Boost::boost)
 endif()
 
 if(USING_OPENSSL_NO_CONAN)

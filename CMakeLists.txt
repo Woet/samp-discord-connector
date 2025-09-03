@@ -80,7 +80,7 @@ if(USING_BOOST_NO_CONAN)
 	set(Boost_INCLUDE_DIR "${Boost_INCLUDE_DIR}" PARENT_SCOPE)
 else()
 	# Modern Conan 2.x approach with find_package
-	find_package(boost REQUIRED)
+	find_package(Boost REQUIRED)
 	find_package(fmt REQUIRED)
 endif()
 
