@@ -58,13 +58,11 @@ jobs:
     - if: runner.os == 'Windows'
       name: Install boost
       run: |
-          $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.73.0/boost_1_73_0-msvc-14.2-64.exe"
-          (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost.exe")
-          Start-Process -Wait -FilePath "$env:TEMP\boost.exe" "/SILENT","/SP-","/SUPPRESSMSGBOXES","/DIR=C:\\hostedtoolcache\\windows\\Boost"
+          choco install boost-msvc-14.3 --version=1.82.0 --force
 
     - if: runner.os == 'Windows'
       name: Set boost env
-      run: echo "BOOST_ROOT=C:\\hostedtoolcache\windows\\Boost" >> $GITHUB_ENV
+      run: echo "BOOST_ROOT=C:\\ProgramData\\chocolatey\\lib\\boost-msvc-14.3" >> $GITHUB_ENV
       shell: bash
 
     - if: runner.os == 'Windows'
