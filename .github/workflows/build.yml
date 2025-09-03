@@ -83,7 +83,7 @@ jobs:
     - name: Get python
       uses: actions/setup-python@v5
       with:
-        python-version: 3.9.0 # SemVer's version range syntax
+        python-version: 3.11
 
     - name: Install conan
       run: |
