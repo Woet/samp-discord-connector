@@ -85,7 +85,7 @@ else()
 		ARCH x86
 		BASIC_SETUP CMAKE_TARGETS
 		BUILD missing
-		OPTIONS boost:zlib=False
+		OPTIONS boost/*:zlib=False
 	)
 	set_target_properties(CONAN_PKG::boost PROPERTIES IMPORTED_GLOBAL TRUE)
 endif()
